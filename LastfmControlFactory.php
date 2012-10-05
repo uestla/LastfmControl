@@ -7,11 +7,8 @@ use Components;
 
 class LastfmControlFactory extends BaseControlFactory
 {
-	/**
-	 * @param  string
-	 * @return Components\LastfmControl
-	 */
-	function create($appID)
+	/** @return Components\LastfmControl */
+	function create()
 	{
 		$c = new Components\LastfmControl;
 		$this->onCreate( $c );
