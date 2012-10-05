@@ -1,0 +1,24 @@
+{if}
+	<ul>
+		{foreach $tracks->lovedtracks->track as $track}
+		<li n:class="!$iterator->last ? notlast">
+			<a href="{$track->url|absolutize}" target="_blank">
+				<img src="{=isset($track->image[0]) && strlen($track->image[0]) ? $track->image[0] : $basePath . '/images/icons/last.fm/noartist.png'}" alt="" class="artist">
+			</a>
+	
+			<ul class="details">
+				<li><a href="{$track->artist->url|absolutize}" target="_blank"><strong>{$track->artist->name}</strong></li>
+				<li><a href="{$track->url|absolutize}" target="_blank">{$track->name}</a></li>
+				<li>
+					{var tr_date => new \Nette\DateTime($track->date, new DateTimeZone('UTC'))} {* nutna synchronizace casu se zvolenou casovou zonou *}
+					{? $tr_date->setTimeZone(new DateTimeZone(date_default_timezone_get())) }
+					{$tr_date|timeAgoInWords}
+				</li>
+			</ul>
+		</li>
+		{/foreach}
+	</ul>
+
+{else}
+	<p>Data se nepodařilo získat, zkuste prosím obnovit stránku.</p>
+{/if $iterations}
