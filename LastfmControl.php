@@ -1,6 +1,16 @@
 <?php
 
-namespace Components;
+/**
+ * This file is part of the LastfmControl package
+ *
+ * Copyright (c) 2013 Petr Kessler (http://kesspess.1991.cz)
+ *
+ * @license  MIT
+ * @link     https://github.com/uestla/LastfmControl
+ */
+
+
+namespace Components\Controls;
 
 use Nette\Utils\Strings;
 
@@ -16,6 +26,7 @@ class LastfmControl extends BaseControl
 
 
 
+	/** @return void */
 	function render()
 	{
 		call_user_func_array(callback($this, 'renderRecentTracks'), func_get_args());
@@ -84,6 +95,10 @@ class LastfmControl extends BaseControl
 
 	// === HELPERS ===================================================
 
+	/**
+	 * @param  string|NULL
+	 * @return void
+	 */
 	protected function prepareTemplate($templateFile = NULL)
 	{
 		$this->template->registerHelper('absolutize', callback(__CLASS__ . '::absolutizeUrl'));
@@ -95,6 +110,10 @@ class LastfmControl extends BaseControl
 
 
 
+	/**
+	 * @param  string
+	 * @return string
+	 */
 	static function absolutizeUrl($s)
 	{
 		$p = 'http://';

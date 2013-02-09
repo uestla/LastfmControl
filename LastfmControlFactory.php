@@ -1,17 +1,41 @@
 <?php
 
-namespace Model\Factories;
+/**
+ * This file is part of the LastfmControl package
+ *
+ * Copyright (c) 2013 Petr Kessler (http://kesspess.1991.cz)
+ *
+ * @license  MIT
+ * @link     https://github.com/uestla/LastfmControl
+ */
 
-use Components;
+
+namespace Components\Factories;
+
+use Nette;
+use Components\Controls;
 
 
-class LastfmControlFactory extends BaseControlFactory
+class LastfmControlFactory extends Nette\Object implements ILastfmControlFactory
 {
-	/** @return Components\LastfmControl */
-	function create()
+
+	/** @var Nette\DI\IContainer */
+	protected $container;
+
+
+
+	/** @param  Nette\DI\IContainer */
+	function __construct(Nette\DI\IContainer $container)
 	{
-		$c = new Components\LastfmControl;
-		$this->onCreate( $c );
-		return $c;
+		$this->container = $container;
 	}
+
+
+
+	/** @return Controls\LastfmControl */
+	function createControl()
+	{
+		return $this->container->createLastfmControl();
+	}
+
 }
