@@ -9,7 +9,6 @@
  * @link     https://github.com/uestla/LastfmControl
  */
 
-
 namespace Components\Controls;
 
 use Nette\Utils\Strings;
@@ -22,8 +21,8 @@ use Nette\Utils\Strings;
  */
 class LastfmControl extends BaseControl
 {
-	const API_KEY = 'b25b959554ed76058ac220b7b2e0a026';
 
+	const API_KEY = 'b25b959554ed76058ac220b7b2e0a026';
 
 
 	/** @return void */
@@ -33,15 +32,14 @@ class LastfmControl extends BaseControl
 	}
 
 
-
 	/**
 	 * Renders user's most recent listened tracks
 	 *
-	 * @param  string
-	 * @param  int
-	 * @param  int
-	 * @param  int
-	 * @param  int
+	 * @param  string $user
+	 * @param  int $limit
+	 * @param  int $page
+	 * @param  int $to
+	 * @param  int $from
 	 * @return void
 	 * @see    http://www.last.fm/api/show?service=278
 	 */
@@ -65,13 +63,13 @@ class LastfmControl extends BaseControl
 	}
 
 
-
 	/**
 	 * Renders user's loved tracks
 	 *
-	 * @param  string
-	 * @param  int
-	 * @param  int
+	 * @param  string $user
+	 * @param  int $limit
+	 * @param  int $page
+	 * @return void
 	 * @see    http://www.last.fm/api/show?service=329
 	 */
 	function renderLovedTracks($user, $limit = 50, $page = 1)
@@ -92,11 +90,10 @@ class LastfmControl extends BaseControl
 	}
 
 
-
 	// === HELPERS ===================================================
 
 	/**
-	 * @param  string|NULL
+	 * @param  string|NULL $templateFile
 	 * @return void
 	 */
 	protected function prepareTemplate($templateFile = NULL)
@@ -109,9 +106,8 @@ class LastfmControl extends BaseControl
 	}
 
 
-
 	/**
-	 * @param  string
+	 * @param  string $s
 	 * @return string
 	 */
 	static function absolutizeUrl($s)
@@ -123,4 +119,5 @@ class LastfmControl extends BaseControl
 
 		return $s;
 	}
+
 }

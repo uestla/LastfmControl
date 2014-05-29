@@ -9,7 +9,6 @@
  * @link     https://github.com/uestla/LastfmControl
  */
 
-
 namespace Components\Factories;
 
 use Nette;
@@ -23,13 +22,11 @@ class LastfmControlFactory extends Nette\Object implements ILastfmControlFactory
 	protected $container;
 
 
-
 	/** @param  Nette\DI\IContainer */
 	function __construct(Nette\DI\IContainer $container)
 	{
 		$this->container = $container;
 	}
-
 
 
 	/** @return Controls\LastfmControl */
